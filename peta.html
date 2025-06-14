@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, user-scalable=no, maximum-scale=1, width=device-width">
+
+    <title>WebGis Kota Makassar</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./resources/ol.css">
+    <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+    <link rel="stylesheet" href="./resources/qgis2web.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1050;
+        background-color:  rgb(61 64 91) !important; /* Warna ungu tetap */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: none !important; /* Hindari efek transisi warna */
+    }
+
+    .navbar .nav-link,
+    .navbar-brand-text,
+    .navbar-toggler-icon {
+        color: #ffffff !important; /* agar teks tetap kontras di atas warna ungu */
+    }
+
+    #map {
+        width: 100%;
+        height: calc(100% - 80px); /* Sesuaikan dengan tinggi navbar */
+        margin-top: 80px;
+    }
+           footer {
+            background-color:rgb(61 64 91);
+        }
+</style>
+</head>
+
+<body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="images/provinsi.png" class="img-logo me-2" alt="Logo Provinsi" style="height:60px;">
+            <img src="images/kota.png" class="img-logo me-2" alt="Logo Kota" style="height:60px;">
+            <span class="navbar-brand-text ms-2 text-white">
+                WebGis KOTA MAKASSAR<br>
+                <small>Provinsi Sulawesi Selatan</small>
+            </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-auto">
+                <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="peta.html">Peta</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="tentang.html">Tentang</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <br/>
+
+    <!-- Peta -->
+    <div id="map">
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="resources/qgis2web_expressions.js"></script>
+    <script src="./resources/functions.js"></script>
+    <script src="./resources/ol.js"></script>
+    <script src="./resources/ol-layerswitcher.js"></script>
+    <script src="layers/ADMINISTRASIKECAMATAN_AR_50K_1.js"></script>
+    <script src="layers/ADMINISTRASIKABKOTA_LN_50K_2.js"></script>
+    <script src="layers/JALAN_LN_50K_3.js"></script>
+    <script src="layers/SUNGAI_AR_50K_4.js"></script>
+    <script src="layers/SUNGAI_LN_50K_5.js"></script>
+    <script src="layers/AIRPORT_AR_50K_6.js"></script>
+    <script src="layers/PEMERINTAHAN_PT_50K_7.js"></script>
+    <script src="layers/PELABUHAN_PT_50K_8.js"></script>
+    <script src="layers/PUSKESMAS_PT_50K_9.js"></script>
+    <script src="layers/JEMBATAN_PT_50K_10.js"></script>
+    <script src="layers/RUMAHSAKIT_PT_50K_11.js"></script>
+    <script src="styles/ADMINISTRASIKECAMATAN_AR_50K_1_style.js"></script>
+    <script src="styles/ADMINISTRASIKABKOTA_LN_50K_2_style.js"></script>
+    <script src="styles/JALAN_LN_50K_3_style.js"></script>
+    <script src="styles/SUNGAI_AR_50K_4_style.js"></script>
+    <script src="styles/SUNGAI_LN_50K_5_style.js"></script>
+    <script src="styles/AIRPORT_AR_50K_6_style.js"></script>
+    <script src="styles/PEMERINTAHAN_PT_50K_7_style.js"></script>
+    <script src="styles/PELABUHAN_PT_50K_8_style.js"></script>
+    <script src="styles/PUSKESMAS_PT_50K_9_style.js"></script>
+    <script src="styles/JEMBATAN_PT_50K_10_style.js"></script>
+    <script src="styles/RUMAHSAKIT_PT_50K_11_style.js"></script>
+    <script src="./layers/layers.js"></script>
+    <script src="./resources/Autolinker.min.js"></script>
+    <script src="./resources/qgis2web.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/animated-headline.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/custom.js"></script>
+
+    <!-- Footer -->
+    <footer class="text-white pt-4 pb-3 text-center">
+        <p class="mb-0 small">&copy; 2025. All rights reserved</p>
+    </footer>
+    <script>
+    // Cegah perubahan warna navbar saat scroll
+    window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (navbar) {
+            navbar.style.backgroundColor = "#6f42c1";
+        }
+    });
+</script>
+
+</body>
+</html>

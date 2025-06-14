@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>WebGis Kota Makasar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+        footer {
+            background-color:rgb(61 64 91);
+        }
+    </style>
+</head>
+
+<body>
+
+<main>
+    <nav class="navbar navbar-expand-lg">    
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="d-flex align-items-center">
+                    <img src="images/provinsi.png" class="img-logo me-2" alt="Logo Provinsi" style="height:60px;">
+                    <img src="images/kota.png" class="img-logo me-2" alt="Logo Kota" style="height:60px;">
+                </div>
+                <span class="navbar-brand-text ms-2">
+                    WebGis KOTA MAKASSAR<br>
+                    <small>Provinsi Sulawesi Selatan</small>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="peta.html">Peta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="tentang.html">Tentang</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section d-flex align-items-center position-relative" style="min-height: 100vh; overflow: hidden;">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline class="position-absolute w-100 h-100 object-fit-cover" style="z-index: -2;">
+            <source src="images/Makassar.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video.
+        </video>
+
+        <!-- Overlay -->
+        <div class="section-overlay position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.5); z-index: -1;"></div>
+
+        <!-- Top SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="position: absolute; top: 0; left: 0; width: 100%; z-index: -1;">
+            <path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,0L0,0Z"></path>
+        </svg>
+
+        <!-- Content -->
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Teks Kiri -->
+                <div class="col-lg-6 text-white text-start pt-5 pt-lg-0">
+                    <h1 class="mb-3">Selamat Datang di <strong>WebGIS Kota Makassar</strong></h1>
+                    <p>Platform informasi geospasial yang menampilkan data wilayah Kota Makassar secara interaktif dan informatif.</p>
+
+                    <div class="custom-btn-group">
+                        <a href="peta.html" class="btn custom-btn smoothscroll me-3">Lihat Peta</a>
+                        <a href="tentang.html" class="btn btn-outline-light smoothscroll">Tentang Kami</a>
+                    </div>
+                </div>
+
+                <!-- Gambar Kanan -->
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                    <img src="images/icon.webp" alt="Icon WebGIS" class="img-fluid" style="max-height: 300px;">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="text-white pt-4 pb-3 text-center">
+    <p class="mb-0 small">&copy; 2025. All rights reserved</p>
+</footer>
+
+<!-- JAVASCRIPT FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/click-scroll.js"></script>
+<script src="js/animated-headline.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>
