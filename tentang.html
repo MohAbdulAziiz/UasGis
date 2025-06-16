@@ -3,27 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>WebGis Kota Makasar</title>
+    <title>WebGis Kota Makassar</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Bootstrap & Custom -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
     <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        font-family: 'DM Sans', sans-serif;
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'DM Sans', sans-serif;
         }
         body {
             display: flex;
@@ -33,160 +31,161 @@
             flex: 1;
         }
         footer {
-            background-color: #3D405B;
+            background-color: rgb(61 64 91);
+            color: white;
         }
         .table-wrapper {
-        background: white;
-        border-radius: 8px;
-        padding: 1rem;
-        max-height: 500px;
-        overflow-y: auto;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        @media (min-width: 992px) {
-        .table-column {
-            flex: 1;
-            min-width: 0;
-            margin: 0 10px;
-        }
-
-        .table-row {
-            display: flex;
-            gap: 1rem;
-        }
-        }
-
-        @media (max-width: 991px) {
-        .table-row {
-            display: block;
-        }
-
-        .table-column {
-            width: 100%;
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
         }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1050;
+            background-color: rgb(61 64 91) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-    .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1050;
-        background-color:  rgb(61 64 91) !important; /* Warna ungu tetap */
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        transition: none !important; /* Hindari efek transisi warna */
-    }
-
-    .navbar .nav-link,
-    .navbar-brand-text,
-    .navbar-toggler-icon {
-        color: #ffffff !important; /* agar teks tetap kontras di atas warna ungu */
-    }
-
-    #map {
-        width: 100%;
-        height: calc(100% - 80px); /* Sesuaikan dengan tinggi navbar */
-        margin-top: 80px;
-    }
-           footer {
-            background-color:rgb(61 64 91);
+        .navbar .nav-link,
+        .navbar-brand-text,
+        .navbar-toggler-icon {
+            color: #ffffff !important;
         }
-</style>
+
+        #map {
+            width: 100%;
+            height: calc(100% - 80px);
+            margin-top: 80px;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navbar -->
-<nav class="navbar navbar-expand-lg">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="images/provinsi.png" class="img-logo me-2" alt="Logo Provinsi" style="height:60px;">
-            <img src="images/kota.png" class="img-logo me-2" alt="Logo Kota" style="height:60px;">
-            <span class="navbar-brand-text ms-2 text-white">
-                WebGis KOTA MAKASSAR<br>
-                <small>Provinsi Sulawesi Selatan</small>
-            </span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-lg-auto">
-                <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="peta.html">Peta</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="tentang.html">Tentang</a></li>
-            </ul>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/provinsi.png" class="img-logo me-2" alt="Logo Provinsi" style="height:60px;">
+                <img src="images/kota.png" class="img-logo me-2" alt="Logo Kota" style="height:60px;">
+                <span class="navbar-brand-text ms-2 text-white">
+                    WebGis KOTA MAKASSAR<br>
+                    <small>Provinsi Sulawesi Selatan</small>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="peta.html">Peta</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="tentang.html">Tentang</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-    <br/>
-       <br/>
-          <br/>
+    </nav>
+    <br>
+    <br>
+<section class="position-relative overflow-hidden" style="min-height: 100vh;">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="z-index: -1;">
+    <source src="images/Makassar.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-<!-- SECTION 2: Tabel Puskesmas -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <h4 class="text-center mb-4">Data Puskesmas Kota Makassar</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="table-puskesmas">
-                <thead class="table-secondary">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </div>
-</section>
+  <!-- Gelap Transparan Overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5); z-index: 0;"></div>
 
-<!-- SECTION 3: Tabel Rumah Sakit -->
-<section class="py-5 bg-white">
-    <div class="container">
-        <h4 class="text-center mb-4">Data Rumah Sakit Kota Makassar</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="table-rumahsakit">
-                <thead class="table-secondary">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+  <!-- Konten -->
+  <div class="container position-relative py-5" style="z-index: 1;">
+    <div class="row align-items-center">
+      <!-- Gambar Kiri -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="row g-3">
+          <div class="col-6">
+            <img src="images/gedung.jpg" alt="Gedung Makassar" class="img-fluid rounded shadow w-100 h-100 object-fit-cover" style="aspect-ratio: 1 / 1;">
+          </div>
+          <div class="col-6">
+            <img src="images/masjid.jpg" alt="Masjid Raya" class="img-fluid rounded shadow w-100 h-100 object-fit-cover" style="aspect-ratio: 1 / 1;">
+          </div>
+          <div class="col-6">
+            <img src="images/pantai.jpg" alt="Pantai Losari" class="img-fluid rounded shadow w-100 h-100 object-fit-cover" style="aspect-ratio: 1 / 1;">
+          </div>
+          <div class="col-6">
+            <img src="images/jalan.jpg" alt="Suasana Jalan" class="img-fluid rounded shadow w-100 h-100 object-fit-cover" style="aspect-ratio: 1 / 1;">
+          </div>
         </div>
-    </div>
-</section>
+      </div>
 
-<!-- SECTION 4: Tabel Instansi Pemerintah -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <h4 class="text-center mb-4">Data Instansi Pemerintah Kota Makassar</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="table-pemerintahan">
-                <thead class="table-secondary">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+      <!-- Teks Kanan -->
+      <div class="col-lg-6">
+        <div class="card bg-dark bg-opacity-50 border-0 p-4 shadow-lg">
+          <div class="card-body text-white">
+            <h3 class="mb-3">Kota Makassar, Sulawesi Selatan</h3>
+            <p>
+              Makassar adalah ibu kota Provinsi Sulawesi Selatan dan menjadi pusat kemajuan di kawasan Indonesia Timur. Keanekaragaman budaya dan masyarakat menjadikannya kota yang hidup dan dinamis.
+            </p>
+            <p>
+              Dikenal akan kekayaan sejarah seperti Benteng Rotterdam dan pesona alam Pantai Losari, Makassar juga menggoda dengan kuliner khas seperti Coto Makassar dan Konro. Masyarakat hidup berdampingan dalam harmoni multikultur Bugis, Makassar, Toraja, hingga Mandar.
+            </p>
+            <p class="mb-0">
+              Kota ini adalah simbol kemajuan yang tidak melupakan akar tradisinya.
+            </p>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 
-<!-- Load JS Data -->
-<script src="layers/PUSKESMAS_PT_50K_9.js"></script>
-<script src="layers/RUMAHSAKIT_PT_50K_11.js"></script>
-<script src="layers/PEMERINTAHAN_PT_50K_7.js"></script>
+<main class="pt-5 mt-5">
+    <!-- SECTION: Tabel Data Gabungan -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h4 class="text-center mb-4">Data Fasilitas Kota Makassar</h4>
+            <div class="table-wrapper table-responsive">
+                <table class="table table-bordered table-striped" id="table-gabungan">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Kategori</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
 
-<!-- Tambah data ke tabel dan aktifkan DataTables -->
+
+    <footer class="text-white pt-4 pb-3 text-center">
+        <p class="mb-0 small">&copy; 2025. All rights reserved</p>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/animated-headline.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <!-- Load JS Data -->
+    <script src="layers/PUSKESMAS_PT_50K_9.js"></script>
+    <script src="layers/RUMAHSAKIT_PT_50K_11.js"></script>
+    <script src="layers/PEMERINTAHAN_PT_50K_7.js"></script>
+
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>
     function tambahBaris(tbodyId, dataList, kategori) {
         const tbody = document.querySelector(`#${tbodyId} tbody`);
@@ -194,7 +193,7 @@
             const nama = item.properties.NAMOBJ || "Tidak diketahui";
             const tr = document.createElement("tr");
             tr.innerHTML = `
-                <td>${index + 1}</td>
+                <td></td>
                 <td>${nama}</td>
                 <td>${kategori}</td>
             `;
@@ -203,51 +202,47 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+        // Tambahkan semua data ke satu tabel
         if (typeof json_PUSKESMAS_PT_50K_9 !== "undefined") {
-            tambahBaris("table-puskesmas", json_PUSKESMAS_PT_50K_9.features, "Puskesmas");
+            tambahBaris("table-gabungan", json_PUSKESMAS_PT_50K_9.features, "Puskesmas");
         }
-
         if (typeof json_RUMAHSAKIT_PT_50K_11 !== "undefined") {
-            tambahBaris("table-rumahsakit", json_RUMAHSAKIT_PT_50K_11.features, "Rumah Sakit");
+            tambahBaris("table-gabungan", json_RUMAHSAKIT_PT_50K_11.features, "Rumah Sakit");
         }
-
         if (typeof json_PEMERINTAHAN_PT_50K_7 !== "undefined") {
-            tambahBaris("table-pemerintahan", json_PEMERINTAHAN_PT_50K_7.features, "Instansi Pemerintah");
+            tambahBaris("table-gabungan", json_PEMERINTAHAN_PT_50K_7.features, "Instansi Pemerintah");
         }
 
-        // Inisialisasi DataTables
-        ['#table-puskesmas', '#table-rumahsakit', '#table-pemerintahan'].forEach(id => {
-            $(id).DataTable({
-                lengthMenu: [5, 10, 20, 25, 50, 100],
-                language: {
-                    search: "Cari:",
-                    lengthMenu: "Tampilkan _MENU_ data",
-                    info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-                    paginate: {
-                        next: "Berikutnya",
-                        previous: "Sebelumnya"
-                    },
-                    zeroRecords: "Data tidak ditemukan"
-                }
-            });
+        // Tambahkan nomor urut dan inisialisasi DataTable
+        const table = $('#table-gabungan').DataTable({
+            scrollY: "300px",
+            scrollCollapse: true,
+            paging: true,
+            lengthMenu: [5, 10, 25, 100],
+            language: {
+                search: "Cari:",
+                lengthMenu: "Tampilkan _MENU_ data",
+                info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                paginate: {
+                    next: "Berikutnya",
+                    previous: "Sebelumnya"
+                },
+                zeroRecords: "Data tidak ditemukan"
+            },
+            columnDefs: [{
+                targets: 0,
+                searchable: false,
+                orderable: false,
+            }],
+            order: [[1, 'asc']]
         });
+
+        table.on('order.dt search.dt', function () {
+            table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
+        }).draw();
     });
 </script>
-
-</main>
-
-<footer class="text-white pt-4 pb-3 text-center">
-    <p class="mb-0 small">&copy; 2025. All rights reserved</p>
-</footer>
-
-<!-- JAVASCRIPT FILES -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/jquery.sticky.js"></script>
-<script src="js/click-scroll.js"></script>
-<script src="js/animated-headline.js"></script>
-<script src="js/modernizr.js"></script>
-<script src="js/custom.js"></script>
-
 </body>
 </html>
